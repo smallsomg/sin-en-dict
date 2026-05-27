@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>僧伽罗语-英语词典 | Sinhala-English Dictionary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --primary-light: #16213e;
+            --accent: #e94560;
+            --accent-hover: #ff6b6b;
+            --gold: #f4d03f;
+            --text: #2c3e50;
+            --text-light: #5d6d7e;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border: #e9ecef;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 3rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Search Section */
+        .search-section {
+            max-width: 800px;
+            margin: -2rem auto 2rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            width: 100%;
+            min-width: 200px;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--bg);
+            box-sizing: border-box;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+        }
+
+        .search-btn {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .search-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .search-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .search-btn .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* Match Settings */
+        .match-settings {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .match-settings-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .match-mode {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .match-mode label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .match-mode input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+        }
+
+        .similarity-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .similarity-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            min-width: 80px;
+        }
+
+        .similarity-slider {
+            flex: 1;
+            min-width: 150px;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--border);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .similarity-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .similarity-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(233,69,96,0.4);
+        }
+
+        .similarity-value {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 50px;
+            text-align: right;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-right: 0.5rem;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .clear-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .clear-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Translation Info */
+        .translation-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--text);
+        }
+
+        .translation-info .icon {
+            font-size: 1rem;
+        }
+
+        .translation-info .text {
+            flex: 1;
+        }
+
+        .translation-info .loading {
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* Results */
+        .results-section {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .results-count {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .results-count strong {
+            color: var(--accent);
+        }
+
+        .results-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .result-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .result-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--accent);
+        }
+
+        .result-item.exact-match {
+            border-left-color: var(--gold);
+            background: linear-gradient(135deg, #fffef0 0%, #ffffff 100%);
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .result-word {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .result-prefix {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .result-translation {
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-similarity {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-similarity .score {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            background: var(--bg);
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .result-similarity .score.high {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .result-similarity .score.medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .result-similarity .score.low {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .chinese-translation {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border);
+        }
+
+        .chinese-translation-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .chinese-translation-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .chinese-translation-btn .loading {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .chinese-translation-text {
+            margin-top: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text);
+            border-left: 3px solid #4caf50;
+        }
+
+        /* Loading & Empty States */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Prefix Legend */
+        .legend {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 0 1.5rem;
+        }
+
+        .legend-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .legend-item {
+            padding: 0.375rem 0.75rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .legend-item:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .legend-item.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .page-btn {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .page-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .page-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .search-input-wrapper {
+                flex-direction: column;
+            }
+
+            .search-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .match-mode {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .similarity-control {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        /* Favorite Button */
+        .favorite-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            padding: 0.25rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+            color: var(--text-light);
+        }
+
+        .favorite-btn:hover {
+            color: var(--gold);
+            background: rgba(244, 208, 63, 0.1);
+        }
+
+        .favorite-btn.favorited {
+            color: var(--gold);
+        }
+
+        /* Search History */
+        .search-history-container {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .search-history-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--border);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+        }
+
+        .search-history-dropdown.active {
+            display: block;
+        }
+
+        .search-history-header {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .search-history-clear-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 0.75rem;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .search-history-clear-btn:hover {
+            color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .search-history-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .search-history-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .search-history-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-history-item:hover {
+            background: var(--bg);
+        }
+
+        .search-history-item.highlight {
+            background: rgba(233, 69, 96, 0.05);
+        }
+
+        .search-history-text {
+            flex: 1;
+            font-size: 0.9rem;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .search-history-time {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-right: 0.75rem;
+        }
+
+        .search-history-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .search-history-item:hover .search-history-actions {
+            opacity: 1;
+        }
+
+        .search-history-action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            color: var(--text-light);
+        }
+
+        .search-history-action-btn:hover {
+            color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .search-history-action-btn.favorite:hover {
+            color: var(--gold);
+            background: rgba(244, 208, 63, 0.1);
+        }
+
+        .search-history-empty {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Suggestions */
+        .suggestions-header {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .suggestions-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover {
+            background: var(--bg);
+        }
+
+        .suggestion-word {
+            flex: 1;
+            font-size: 0.9rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .suggestion-sinhala {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+
+        .suggestion-prefix {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--bg);
+            border-radius: 4px;
+            color: var(--text-light);
+            margin-left: 0.5rem;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>සිංහල-ඉංග්‍රීසි ශබ්දකෝෂය</h1>
+            <p class="subtitle">Sinhala-English Dictionary</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="totalEntries">0</div>
+                    <div class="stat-label">词条总数</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">30+</div>
+                    <div class="stat-label">词性分类</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-box">
+            <div class="search-input-wrapper">
+                <div class="search-history-container" id="searchHistoryContainer">
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="searchInput"
+                        placeholder="输入英文、僧伽罗语或中文搜索..."
+                        autocomplete="off"
+                    >
+                    <div class="search-history-dropdown" id="searchHistoryDropdown">
+                        <div class="suggestions-header" id="suggestionsHeader" style="display: none;">
+                            <span>推荐词条</span>
+                        </div>
+                        <ul class="suggestions-list" id="suggestionsList"></ul>
+                        <div class="search-history-header" id="searchHistoryHeader" style="display: none;">
+                            <span>搜索历史</span>
+                            <button class="search-history-clear-btn" onclick="clearSearchHistory()">清空</button>
+                        </div>
+                        <ul class="search-history-list" id="searchHistoryList">
+                            <li class="search-history-empty">暂无搜索记录</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="search-btn" id="searchBtn" onclick="performSearch(false)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    搜索
+                </button>
+            </div>
+
+            <!-- Translation Info -->
+            <div id="translationInfo" style="display: none;"></div>
+
+            <!-- Match Settings -->
+            <div class="match-settings">
+                <div class="match-settings-title">
+                    <span>🔍</span>
+                    <span>匹配设置</span>
+                </div>
+                <div class="match-mode">
+                    <label>
+                        <input type="radio" name="matchMode" value="exact" checked>
+                        <span>精确匹配</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="matchMode" value="startsWith">
+                        <span>开头匹配</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="matchMode" value="contains">
+                        <span>包含匹配</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="matchMode" value="fuzzy">
+                        <span>模糊匹配</span>
+                    </label>
+                </div>
+                <div class="similarity-control" id="similarityControl" style="display: none;">
+                    <span class="similarity-label">相似度阈值:</span>
+                    <input 
+                        type="range" 
+                        class="similarity-slider" 
+                        id="similaritySlider"
+                        min="0" 
+                        max="100" 
+                        value="60"
+                        oninput="updateSimilarityValue(this.value)"
+                    >
+                    <span class="similarity-value" id="similarityValue">60%</span>
+                </div>
+            </div>
+
+            <div class="filters">
+                <span class="filter-label">词性筛选:</span>
+                <select class="filter-select" id="prefixFilter" onchange="performSearch()">
+                    <option value="">全部</option>
+                </select>
+                <button class="clear-btn" onclick="clearSearch()">清除筛选</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legend -->
+    <section class="legend">
+        <div class="legend-title">常用词性</div>
+        <div class="legend-items" id="legendItems"></div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="results-header">
+            <span class="results-count">
+                找到 <strong id="resultCount">0</strong> 个结果
+            </span>
+        </div>
+        <div class="results-list" id="resultsList">
+            <div class="empty-state">
+                <div class="empty-state-icon">📚</div>
+                <p>输入关键词开始搜索词典</p>
+            </div>
+        </div>
+        <div class="pagination" id="pagination"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>基于 OpenDictionary 数据 | 仅供学习使用</p>
+    </footer>
+
+    <!-- 加载分割后的词典数据（4个文件，每个<6MB） -->
+    <script src="dictionary_data_1.js"></script>
+    <script src="dictionary_data_2.js"></script>
+    <script src="dictionary_data_3.js"></script>
+    <script src="dictionary_data_4.js"></script>
+
+    <script>
+        // 合并四个数据文件
+        const DICTIONARY_DATA = [
+            ...DICTIONARY_DATA_1,
+            ...DICTIONARY_DATA_2,
+            ...DICTIONARY_DATA_3,
+            ...DICTIONARY_DATA_4
+        ];
+        // 释放临时变量以节省内存
+        DICTIONARY_DATA_1 = null;
+        DICTIONARY_DATA_2 = null;
+        DICTIONARY_DATA_3 = null;
+        DICTIONARY_DATA_4 = null;
+    </script>
+
+    <script>
+        // ============================================
+        // 应用逻辑
+        // ============================================
+        
+        const ITEMS_PER_PAGE = 20;
+        let currentPage = 1;
+        let currentResults = [];
+        let allPrefixes = [];
+        let currentTranslatedQuery = null;
+        let isChineseQuery = false;
+
+        // 词性说明
+        const PREFIX_DESCRIPTIONS = {
+            'n.': '名词 (Noun)',
+            'a.': '冠词 (Article)',
+            'Law.': '法律 (Law)',
+            'Civ.': '土木 (Civil)',
+            'vt.': '及物动词 (Transitive Verb)',
+            'Acc.': '会计 (Accounting)',
+            'Bot.': '植物学 (Botany)',
+            'Che.': '化学 (Chemistry)',
+            'Soc.': '社会学 (Sociology)',
+            'v.': '动词 (Verb)',
+            'Mat.': '数学 (Mathematics)',
+            'Aes.': '美学 (Aesthetics)',
+            'Phy.': '物理学 (Physics)',
+            'Psy.': '心理学 (Psychology)',
+            'Eco.': '经济学 (Economics)',
+            'Med.': '医学 (Medicine)',
+            'Geo.': '地理学 (Geography)',
+            'vti.': '及物/不及物动词',
+            'Art.': '艺术 (Art)',
+            'Log.': '逻辑学 (Logic)',
+            'Sta.': '统计学 (Statistics)',
+            'adv.': '副词 (Adverb)',
+            'adj.': '形容词 (Adjective)',
+            'Ele.': '电子学 (Electronics)',
+            'Sur.': '测量学 (Surveying)',
+            'st.': '陈述 (Statement)',
+            'Oth.': '其他 (Other)',
+            'Mng.': '管理 (Management)',
+            'vi.': '不及物动词',
+            'Inf.': '非正式 (Informal)',
+            'pref.': '前缀 (Prefix)'
+        };
+
+        // 初始化
+        function init() {
+            if (typeof DICTIONARY_DATA === 'undefined' || DICTIONARY_DATA.length === 0) {
+                showError('数据加载失败：请确保 dictionary_data.js 与 index.html 在同一目录下');
+                return;
+            }
+
+            document.getElementById('totalEntries').textContent = DICTIONARY_DATA.length.toLocaleString();
+            
+            // 提取所有词性
+            const prefixCounts = {};
+            DICTIONARY_DATA.forEach(item => {
+                const prefix = item.prefix || item.type || '';
+                prefixCounts[prefix] = (prefixCounts[prefix] || 0) + 1;
+            });
+            
+            allPrefixes = Object.entries(prefixCounts)
+                .sort((a, b) => b[1] - a[1])
+                .map(([prefix]) => prefix);
+
+            // 填充词性筛选下拉框
+            const prefixFilter = document.getElementById('prefixFilter');
+            allPrefixes.forEach(prefix => {
+                const option = document.createElement('option');
+                option.value = prefix;
+                option.textContent = `${prefix} (${prefixCounts[prefix]})`;
+                prefixFilter.appendChild(option);
+            });
+
+            // 填充常用词性图例
+            const legendItems = document.getElementById('legendItems');
+            allPrefixes.slice(0, 15).forEach(prefix => {
+                const item = document.createElement('span');
+                item.className = 'legend-item';
+                item.textContent = prefix;
+                item.title = PREFIX_DESCRIPTIONS[prefix] || prefix;
+                item.onclick = () => selectPrefix(prefix);
+                legendItems.appendChild(item);
+            });
+
+            // 绑定回车键搜索
+            document.getElementById('searchInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') performSearch(false);
+            });
+
+            // 绑定搜索框focus事件显示历史记录或推荐词条
+            document.getElementById('searchInput').addEventListener('focus', showSearchHistory);
+            
+            // 绑定搜索框input事件显示推荐词条
+            document.getElementById('searchInput').addEventListener('input', handleSearchInput);
+            
+            // 点击页面其他地方关闭历史记录
+            document.addEventListener('click', (e) => {
+                const container = document.getElementById('searchHistoryContainer');
+                if (container && !container.contains(e.target)) {
+                    hideSearchHistory();
+                }
+            });
+
+            // 绑定匹配模式切换事件，控制相似度滑块显示
+            document.querySelectorAll('input[name="matchMode"]').forEach(radio => {
+                radio.addEventListener('change', toggleSimilarityControl);
+            });
+
+            // 初始化搜索历史显示
+            renderSearchHistory();
+        }
+
+        // 处理搜索框输入
+        function handleSearchInput() {
+            const query = document.getElementById('searchInput').value.trim();
+            
+            if (query.length >= 1) {
+                const suggestions = getSuggestions(query);
+                renderSuggestions(suggestions);
+                showSearchHistory();
+            } else {
+                clearSuggestions();
+            }
+        }
+
+        // 获取推荐词条
+        function getSuggestions(query) {
+            const matchMode = document.querySelector('input[name="matchMode"]:checked').value;
+            const prefixFilter = document.getElementById('prefixFilter').value;
+            const similarityThreshold = parseInt(document.getElementById('similaritySlider').value);
+            const searchQuery = query.toLowerCase();
+            const isChineseQuery = isChinese(query);
+            const isSinhalaQuery = isSinhala(query);
+
+            const scoredResults = [];
+
+            DICTIONARY_DATA.forEach(item => {
+                const english = (item.english || item.en || '').toLowerCase();
+                const sinhala = item.sinhala || item.si || '';
+                const prefix = item.prefix || item.type || '';
+                
+                if (prefixFilter && prefix !== prefixFilter) return;
+
+                let score = 0;
+
+                if (isSinhalaQuery) {
+                    const siMatch = sinhalaMatchScore(query, sinhala);
+                    if (siMatch) score = siMatch.score;
+                } else if (!isChineseQuery) {
+                    switch (matchMode) {
+                        case 'exact':
+                            if (english === searchQuery) score = 100;
+                            break;
+                        case 'startsWith':
+                            if (english.startsWith(searchQuery)) score = 90;
+                            break;
+                        case 'contains':
+                            if (english.includes(searchQuery)) score = 80;
+                            break;
+                        case 'fuzzy':
+                            const similarity = calculateSimilarity(english, searchQuery);
+                            if (similarity >= similarityThreshold) score = similarity;
+                            break;
+                    }
+                }
+
+                if (score > 0) {
+                    scoredResults.push({
+                        item,
+                        score,
+                        english: item.english || item.en || '',
+                        sinhala: item.sinhala || item.si || '',
+                        prefix: item.prefix || item.type || ''
+                    });
+                }
+            });
+
+            scoredResults.sort((a, b) => b.score - a.score);
+            return scoredResults.slice(0, 20);
+        }
+
+        // 渲染推荐词条
+        function renderSuggestions(suggestions) {
+            const header = document.getElementById('suggestionsHeader');
+            const list = document.getElementById('suggestionsList');
+            const query = document.getElementById('searchInput').value.trim();
+            const isSinhalaQuery = isSinhala(query);
+            
+            if (suggestions.length === 0) {
+                header.style.display = 'none';
+                list.innerHTML = '';
+                return;
+            }
+
+            header.style.display = 'flex';
+            list.innerHTML = suggestions.map(item => {
+                if (isSinhalaQuery) {
+                    return `
+                        <li class="suggestion-item" onclick="searchFromSuggestion('${escapeHtml(item.sinhala)}', '${escapeHtml(item.sinhala)}', '${escapeHtml(item.prefix)}')">
+                            <span class="suggestion-word">${escapeHtml(item.sinhala)}</span>
+                            <span class="suggestion-sinhala">${escapeHtml(item.english)}</span>
+                            <span class="suggestion-prefix">${item.prefix}</span>
+                        </li>
+                    `;
+                } else {
+                    return `
+                        <li class="suggestion-item" onclick="searchFromSuggestion('${escapeHtml(item.english)}', '${escapeHtml(item.sinhala)}', '${escapeHtml(item.prefix)}')">
+                            <span class="suggestion-word">${escapeHtml(item.english)}</span>
+                            <span class="suggestion-sinhala">${escapeHtml(item.sinhala)}</span>
+                            <span class="suggestion-prefix">${item.prefix}</span>
+                        </li>
+                    `;
+                }
+            }).join('');
+        }
+
+        // 清除推荐词条
+        function clearSuggestions() {
+            document.getElementById('suggestionsHeader').style.display = 'none';
+            document.getElementById('suggestionsList').innerHTML = '';
+        }
+
+        // 从推荐词条搜索
+        function searchFromSuggestion(word, sinhala, prefix) {
+            document.getElementById('searchInput').value = word;
+            hideSearchHistory();
+            clearSuggestions();
+            performSearch(true, sinhala, prefix);
+        }
+
+        // 切换相似度滑块显示并自动搜索
+        function toggleSimilarityControl() {
+            const matchMode = document.querySelector('input[name="matchMode"]:checked').value;
+            const similarityControl = document.getElementById('similarityControl');
+            if (matchMode === 'fuzzy') {
+                similarityControl.style.display = 'flex';
+            } else {
+                similarityControl.style.display = 'none';
+            }
+            
+            // 如果搜索框有内容，自动执行搜索
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                performSearch();
+            }
+        }
+
+        // 更新相似度显示
+        function updateSimilarityValue(value) {
+            document.getElementById('similarityValue').textContent = value + '%';
+        }
+
+        // 检测是否为中文
+        function isChinese(text) {
+            return /[\u4e00-\u9fa5]/.test(text);
+        }
+
+        // 调用 MyMemory API 翻译
+        async function translateWithMyMemory(text, fromLang, toLang) {
+            const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang}|${toLang}`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.responseStatus === 200) {
+                    return {
+                        success: true,
+                        translation: data.responseData.translatedText,
+                        match: data.responseData.match
+                    };
+                } else {
+                    return { success: false, error: data.responseDetails };
+                }
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        }
+
+        // 显示翻译信息
+        function showTranslationInfo(message, isLoading = false) {
+            const infoDiv = document.getElementById('translationInfo');
+            if (isLoading) {
+                infoDiv.innerHTML = `
+                    <span class="icon">🌐</span>
+                    <span class="text">${message}</span>
+                    <span class="loading"></span>
+                `;
+            } else {
+                infoDiv.innerHTML = `
+                    <span class="icon">✓</span>
+                    <span class="text">${message}</span>
+                `;
+            }
+            infoDiv.style.display = 'flex';
+        }
+
+        // 隐藏翻译信息
+        function hideTranslationInfo() {
+            document.getElementById('translationInfo').style.display = 'none';
+        }
+
+        // ============================================
+        // 僧伽罗语变格系统 (Sinhala Declension)
+        // ============================================
+        //
+        // 僧伽罗语有 8 种格 (Cases)，名词根据语法角色添加不同后缀：
+        //
+        // 1. 主格 (Nominative)     - 无标记           例: ගෙදර (house)
+        // 2. 属格 (Genitive)       - -ge / -ගේ       例: ගෙදරගේ (of the house)
+        // 3. 受格 (Accusative)     - -va / -ව        例: ගෙදරව (the house, 宾语)
+        // 4. 施格 (Agentive)       - -in / -ින්      例: ගෙදරින් (by the house)
+        // 5. 具格 (Instrumental)   - -en / -ෙන්      例: ගෙදරෙන් (with the house)
+        // 6. 与格 (Dative)         - -ta / -ට        例: ගෙදරට (to the house)
+        // 7. 从格 (Ablative)       - -gen+iwanata    例: ගෙදරගෙන්ඉවනට (from the house)
+        // 8. 位置格 (Locative)     - 后置词 sitiji    例: ගෙදර සිටියි (at the house)
+        //
+        // 此外还有：
+        // - 复数后缀: -val / -වල (无生命), -un / -ුන් (有生命)
+        // - 指小词缀: -ek / -එක්, -a / -අ
+        // - 强调/限定后缀: -ma / -ම, -i / -යි
+        // ============================================
+
+        // 僧伽罗语格后缀表（按长度降序排列，优先匹配长后缀）
+        const SINHALA_CASE_SUFFIXES = [
+            // 从格 (Ablative) - 最长，优先匹配
+            { suffix: 'ගෙන්ඉවනට', case: '从格', stem: '' },
+            { suffix: 'ගෙන්ඉවන',   case: '从格', stem: '' },
+            // 属格 + 复数组合
+            { suffix: 'ගේවල',     case: '属格+复数', stem: '' },
+            { suffix: 'වලින්',    case: '复数+施格', stem: '' },
+            { suffix: 'වලෙන්',    case: '复数+具格', stem: '' },
+            { suffix: 'වලට',      case: '复数+与格', stem: '' },
+            { suffix: 'වල',       case: '复数', stem: '' },
+            // 属格 (Genitive)
+            { suffix: 'ගේ',        case: '属格', stem: '' },
+            { suffix: 'ge',         case: '属格', stem: '' },
+            { suffix: 'ගෙ',        case: '属格', stem: '' },
+            // 施格 (Agentive)
+            { suffix: 'ින්',       case: '施格', stem: '' },
+            { suffix: 'in',         case: '施格', stem: '' },
+            // 具格 (Instrumental)
+            { suffix: 'ෙන්',       case: '具格', stem: '' },
+            { suffix: 'en',         case: '具格', stem: '' },
+            // 受格 (Accusative)
+            { suffix: 'ව ',        case: '受格', stem: '' },
+            { suffix: 'ව',         case: '受格', stem: '' },
+            { suffix: 'va',         case: '受格', stem: '' },
+            { suffix: 'wo',         case: '受格', stem: '' },
+            { suffix: 'වා',        case: '受格', stem: '' },
+            { suffix: 'wa',         case: '受格', stem: '' },
+            // 与格 (Dative)
+            { suffix: 'ට',         case: '与格', stem: '' },
+            { suffix: 'ta',         case: '与格', stem: '' },
+            { suffix: 'tuh',        case: '与格', stem: '' },
+            { suffix: 'ටහ',        case: '与格', stem: '' },
+            // 复数 (Plural) - 有生命
+            { suffix: 'ුන්',       case: '复数(有生命)', stem: '' },
+            { suffix: 'uno',        case: '复数(有生命)', stem: '' },
+            // 指小词 / 限定词
+            { suffix: 'ෙක්',       case: '指小词', stem: '' },
+            { suffix: 'ek',         case: '指小词', stem: '' },
+            { suffix: 'එක',        case: '指小词', stem: '' },
+            // 强调 / 句末助词
+            { suffix: 'යි',        case: '强调', stem: '' },
+            { suffix: 'ම',         case: '强调', stem: '' },
+            { suffix: 'i',          case: '强调', stem: '' },
+        ];
+
+        // 僧伽罗语词干提取：从变格形式还原为基础形式（保守策略）
+        function sinhalaStem(word) {
+            if (!word || word.length < 3) return [word];
+
+            const stems = new Set();
+            stems.add(word); // 原词本身也保留
+
+            // 策略1：只剥离已知的格后缀（精确匹配）
+            for (const { suffix } of SINHALA_CASE_SUFFIXES) {
+                if (word.endsWith(suffix) && word.length > suffix.length + 2) {
+                    stems.add(word.slice(0, -suffix.length));
+                }
+            }
+
+            // 策略2：连续剥离最多2个后缀
+            let current = word;
+            for (let round = 0; round < 2; round++) {
+                let stripped = false;
+                for (const { suffix } of SINHALA_CASE_SUFFIXES) {
+                    if (current.endsWith(suffix) && current.length > suffix.length + 2) {
+                        current = current.slice(0, -suffix.length);
+                        if (current.length >= 2) {
+                            stems.add(current);
+                            stripped = true;
+                        }
+                    }
+                }
+                if (!stripped) break;
+            }
+
+            // 移除过短的词干（通常是无效的）
+            return Array.from(stems).filter(s => s.length >= 2);
+        }
+
+        // 从词干生成变格拓展形式（用于反向匹配）
+        function sinhalaExpand(stem) {
+            if (!stem || stem.length < 2) return [stem];
+
+            const forms = new Set();
+            forms.add(stem);
+
+            // 只生成最常用的变格形式
+            const commonSuffixes = [
+                'ගේ', 'ව', 'ට', 'ෙන්', 'ින්',  // 常用格后缀
+                'වල',  // 复数
+            ];
+
+            for (const suffix of commonSuffixes) {
+                forms.add(stem + suffix);
+            }
+
+            return Array.from(forms);
+        }
+
+        // 检测文本是否包含僧伽罗语字符
+        function isSinhala(text) {
+            return /[\u0D80-\u0DFF]/.test(text);
+        }
+
+        // 计算字符串相似度 (Levenshtein Distance)
+        function calculateSimilarity(str1, str2) {
+            const s1 = str1.toLowerCase();
+            const s2 = str2.toLowerCase();
+            
+            // 完全匹配
+            if (s1 === s2) return 100;
+            
+            // 包含匹配
+            if (s1.includes(s2) || s2.includes(s1)) return 90;
+            
+            // Levenshtein Distance
+            const len1 = s1.length;
+            const len2 = s2.length;
+            const matrix = [];
+            
+            for (let i = 0; i <= len1; i++) {
+                matrix[i] = [i];
+            }
+            for (let j = 0; j <= len2; j++) {
+                matrix[0][j] = j;
+            }
+            
+            for (let i = 1; i <= len1; i++) {
+                for (let j = 1; j <= len2; j++) {
+                    const cost = s1[i - 1] === s2[j - 1] ? 0 : 1;
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j] + 1,
+                        matrix[i][j - 1] + 1,
+                        matrix[i - 1][j - 1] + cost
+                    );
+                }
+            }
+            
+            const distance = matrix[len1][len2];
+            const maxLen = Math.max(len1, len2);
+            return Math.round((1 - distance / maxLen) * 100);
+        }
+
+        // 僧伽罗语智能匹配：词干提取 + 变格拓展（严格模式）
+        function sinhalaMatchScore(query, dictEntry) {
+            // 1. 精确匹配
+            if (query === dictEntry) return { score: 100, type: '精确' };
+
+            // 2. 包含匹配（要求查询词至少3个字符）
+            if (query.length >= 3 && dictEntry.includes(query)) {
+                return { score: 88, type: '包含' };
+            }
+            if (dictEntry.length >= 3 && query.includes(dictEntry)) {
+                return { score: 88, type: '包含' };
+            }
+
+            // 3. 词干提取：将查询词还原为基础形式后精确匹配
+            const queryStems = sinhalaStem(query);
+            for (const stem of queryStems) {
+                if (stem === dictEntry) return { score: 95, type: '变格还原' };
+            }
+
+            // 4. 变格拓展：将词典条目拓展后精确匹配查询词
+            const dictExpanded = sinhalaExpand(dictEntry);
+            for (const form of dictExpanded) {
+                if (form === query) return { score: 93, type: '变格拓展' };
+            }
+
+            // 5. 双向词干精确匹配（不使用相似度，避免误匹配）
+            const dictStems = sinhalaStem(dictEntry);
+            for (const qs of queryStems) {
+                for (const ds of dictStems) {
+                    if (qs === ds && qs.length >= 3) {
+                        return { score: 90, type: '词干匹配' };
+                    }
+                }
+            }
+
+            // 不再使用相似度回退，避免大量误匹配
+            return null;
+        }
+
+        // 执行搜索
+        async function performSearch(recordHistory = false, historySinhala = '', historyPrefix = '') {
+            const rawQuery = document.getElementById('searchInput').value.trim();
+            const prefixFilter = document.getElementById('prefixFilter').value;
+            const matchMode = document.querySelector('input[name="matchMode"]:checked').value;
+            const similarityThreshold = parseInt(document.getElementById('similaritySlider').value);
+            const searchBtn = document.getElementById('searchBtn');
+
+            if (!rawQuery) {
+                currentResults = [];
+                currentTranslatedQuery = null;
+                isChineseQuery = false;
+                hideTranslationInfo();
+                renderResults();
+                return;
+            }
+
+            // 检测是否为中文查询
+            isChineseQuery = isChinese(rawQuery);
+            let searchQuery = rawQuery.toLowerCase();
+
+            // 如果是中文，先翻译成英文
+            if (isChineseQuery) {
+                searchBtn.disabled = true;
+                searchBtn.innerHTML = '<span class="spinner"></span>翻译中...';
+                showTranslationInfo(`正在将 "${rawQuery}" 翻译成英文...`, true);
+
+                const result = await translateWithMyMemory(rawQuery, 'zh-CN', 'en');
+                
+                searchBtn.disabled = false;
+                searchBtn.innerHTML = `
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    搜索
+                `;
+
+                if (result.success) {
+                    currentTranslatedQuery = result.translation.toLowerCase();
+                    searchQuery = currentTranslatedQuery;
+                    showTranslationInfo(`中文 "${rawQuery}" → 英文 "${result.translation}" (匹配度: ${(result.match * 100).toFixed(1)}%)`);
+                } else {
+                    showTranslationInfo(`翻译失败: ${result.error}，将直接搜索中文`);
+                    currentTranslatedQuery = null;
+                }
+            } else {
+                currentTranslatedQuery = null;
+                hideTranslationInfo();
+            }
+
+            // 过滤数据
+            const scoredResults = [];
+            
+            DICTIONARY_DATA.forEach(item => {
+                const english = (item.english || item.en || '').toLowerCase();
+                const sinhala = item.sinhala || item.si || '';
+                const prefix = item.prefix || item.type || '';
+                
+                // 词性筛选
+                if (prefixFilter && prefix !== prefixFilter) return;
+
+                let score = 0;
+                let isExact = false;
+                let matchType = '';
+
+                // 根据匹配模式计算分数
+                switch (matchMode) {
+                    case 'exact':
+                        if (english === searchQuery) {
+                            score = 100;
+                            isExact = true;
+                            matchType = '精确';
+                        }
+                        break;
+                    
+                    case 'startsWith':
+                        if (english === searchQuery) {
+                            score = 100;
+                            isExact = true;
+                            matchType = '精确';
+                        } else if (english.startsWith(searchQuery)) {
+                            score = 90;
+                            matchType = '开头';
+                        }
+                        break;
+                    
+                    case 'contains':
+                        if (english === searchQuery) {
+                            score = 100;
+                            isExact = true;
+                            matchType = '精确';
+                        } else if (english.startsWith(searchQuery)) {
+                            score = 90;
+                            matchType = '开头';
+                        } else if (english.includes(searchQuery)) {
+                            score = 80;
+                            matchType = '包含';
+                        }
+                        break;
+                    
+                    case 'fuzzy':
+                        const similarity = calculateSimilarity(english, searchQuery);
+                        if (similarity >= similarityThreshold) {
+                            score = similarity;
+                            isExact = similarity === 100;
+                            matchType = similarity === 100 ? '精确' : `相似 ${similarity}%`;
+                        }
+                        break;
+                }
+
+                // 僧伽罗语搜索（智能变格匹配）
+                if (score === 0 && !isChineseQuery && isSinhala(rawQuery)) {
+                    const siMatch = sinhalaMatchScore(rawQuery, sinhala);
+                    if (siMatch) {
+                        score = siMatch.score;
+                        matchType = siMatch.type;
+                        isExact = siMatch.score === 100;
+                    }
+                }
+
+                if (score > 0) {
+                    scoredResults.push({
+                        item,
+                        score,
+                        isExact,
+                        matchType,
+                        english: item.english || item.en || '',
+                        sinhala: item.sinhala || item.si || '',
+                        prefix: item.prefix || item.type || ''
+                    });
+                }
+            });
+
+            // 排序：精确匹配优先，然后按分数降序
+            scoredResults.sort((a, b) => {
+                if (a.isExact && !b.isExact) return -1;
+                if (!a.isExact && b.isExact) return 1;
+                return b.score - a.score;
+            });
+
+            currentResults = scoredResults;
+            currentPage = 1;
+            renderResults();
+            
+            // 只有从推荐词条点击搜索时才记录搜索历史
+            if (recordHistory && historySinhala && historyPrefix) {
+                addSearchHistory(rawQuery, historySinhala, historyPrefix);
+            }
+        }
+
+        // 渲染结果
+        function renderResults() {
+            const resultsList = document.getElementById('resultsList');
+            const resultCount = document.getElementById('resultCount');
+            const pagination = document.getElementById('pagination');
+
+            resultCount.textContent = currentResults.length.toLocaleString();
+
+            if (currentResults.length === 0) {
+                resultsList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <p>未找到匹配的结果</p>
+                        ${isChineseQuery ? '<p style="font-size: 0.875rem; margin-top: 0.5rem;">尝试调整匹配模式或相似度阈值</p>' : ''}
+                    </div>
+                `;
+                pagination.innerHTML = '';
+                return;
+            }
+
+            // 分页
+            const totalPages = Math.ceil(currentResults.length / ITEMS_PER_PAGE);
+            const start = (currentPage - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const pageResults = currentResults.slice(start, end);
+
+            // 渲染结果列表
+            resultsList.innerHTML = pageResults.map((result, index) => {
+                const { english, sinhala, prefix, score, isExact, matchType } = result;
+                const globalIndex = start + index;
+                
+                let scoreClass = 'low';
+                if (score >= 90) scoreClass = 'high';
+                else if (score >= 70) scoreClass = 'medium';
+                
+                const isFavorited = isFavorite(english, sinhala, prefix);
+                return `
+                <div class="result-item ${isExact ? 'exact-match' : ''}">
+                    <div class="result-header">
+                        <span class="result-word">${escapeHtml(english)}</span>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="result-prefix" title="${PREFIX_DESCRIPTIONS[prefix] || prefix}">${prefix}</span>
+                            <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
+                                    onclick="toggleFavorite(${globalIndex}, this)"
+                                    title="${isFavorited ? '取消收藏' : '收藏'}">
+                                ${isFavorited ? '❤️' : '🤍'}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="result-translation">${escapeHtml(sinhala)}</div>
+                    <div class="result-similarity">
+                        <span class="score ${scoreClass}">${matchType}</span>
+                    </div>
+                    <div class="chinese-translation">
+                        <button class="chinese-translation-btn" onclick="showChineseTranslation(${globalIndex}, this)">
+                            <span>🇨🇳</span>
+                            <span>查看中文翻译</span>
+                        </button>
+                        <div class="chinese-translation-text" id="chinese-${globalIndex}" style="display: none;"></div>
+                    </div>
+                </div>
+            `}).join('');
+
+            // 渲染分页
+            renderPagination(totalPages);
+        }
+
+        // 显示中文翻译
+        async function showChineseTranslation(index, btn) {
+            const textDiv = document.getElementById(`chinese-${index}`);
+            
+            if (textDiv.style.display === 'block') {
+                textDiv.style.display = 'none';
+                btn.innerHTML = '<span>🇨🇳</span><span>查看中文翻译</span>';
+                return;
+            }
+
+            const result = currentResults[index];
+            const english = result.english;
+
+            btn.innerHTML = '<span class="loading"></span><span>翻译中...</span>';
+            btn.disabled = true;
+
+            const translation = await translateWithMyMemory(english, 'en', 'zh-CN');
+
+            btn.disabled = false;
+            
+            if (translation.success) {
+                textDiv.textContent = `中文: ${translation.translation}`;
+                textDiv.style.display = 'block';
+                btn.innerHTML = '<span>🔼</span><span>隐藏中文</span>';
+            } else {
+                textDiv.textContent = '翻译失败，请重试';
+                textDiv.style.display = 'block';
+                btn.innerHTML = '<span>🔄</span><span>重试</span>';
+            }
+        }
+
+        // 渲染分页
+        function renderPagination(totalPages) {
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            
+            html += `<button class="page-btn" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>上一页</button>`;
+            
+            const maxVisible = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+            
+            if (endPage - startPage < maxVisible - 1) {
+                startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+
+            if (startPage > 1) {
+                html += `<button class="page-btn" onclick="goToPage(1)">1</button>`;
+                if (startPage > 2) html += `<span style="padding: 0.5rem;">...</span>`;
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) html += `<span style="padding: 0.5rem;">...</span>`;
+                html += `<button class="page-btn" onclick="goToPage(${totalPages})">${totalPages}</button>`;
+            }
+
+            html += `<button class="page-btn" onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>下一页</button>`;
+            
+            pagination.innerHTML = html;
+        }
+
+        // 跳转到指定页
+        function goToPage(page) {
+            currentPage = page;
+            renderResults();
+            document.getElementById('resultsList').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // 选择词性
+        function selectPrefix(prefix) {
+            document.getElementById('prefixFilter').value = prefix;
+            document.querySelectorAll('.legend-item').forEach(item => {
+                item.classList.toggle('active', item.textContent === prefix);
+            });
+            performSearch();
+        }
+
+        // 清除搜索
+        function clearSearch() {
+            document.getElementById('prefixFilter').value = '';
+            document.querySelectorAll('.legend-item').forEach(item => item.classList.remove('active'));
+            performSearch();
+        }
+
+        // 收藏功能
+        function getFavorites() {
+            const stored = localStorage.getItem('dictionary_favorites');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function saveFavorites(favorites) {
+            localStorage.setItem('dictionary_favorites', JSON.stringify(favorites));
+        }
+
+        function isFavorite(english, sinhala, prefix) {
+            const favorites = getFavorites();
+            return favorites.some(fav => 
+                fav.english === english && fav.sinhala === sinhala && fav.prefix === prefix
+            );
+        }
+
+        function toggleFavorite(index, btn) {
+            const result = currentResults[index];
+            const favorites = getFavorites();
+            const { english, sinhala, prefix } = result;
+            
+            const existingIndex = favorites.findIndex(fav => 
+                fav.english === english && fav.sinhala === sinhala && fav.prefix === prefix
+            );
+            
+            if (existingIndex >= 0) {
+                favorites.splice(existingIndex, 1);
+                btn.classList.remove('favorited');
+                btn.innerHTML = '🤍';
+                btn.title = '收藏';
+            } else {
+                favorites.push({ english, sinhala, prefix, timestamp: Date.now() });
+                btn.classList.add('favorited');
+                btn.innerHTML = '❤️';
+                btn.title = '取消收藏';
+            }
+            
+            saveFavorites(favorites);
+        }
+
+        // 搜索历史功能
+        function getSearchHistory() {
+            const stored = localStorage.getItem('dictionary_search_history');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function saveSearchHistory(history) {
+            localStorage.setItem('dictionary_search_history', JSON.stringify(history));
+        }
+
+        function addSearchHistory(query, sinhala, prefix) {
+            if (!query.trim()) return;
+            
+            const history = getSearchHistory();
+            const existingIndex = history.findIndex(item => item.query.toLowerCase() === query.toLowerCase());
+            
+            if (existingIndex >= 0) {
+                history.splice(existingIndex, 1);
+            }
+            
+            history.unshift({ 
+                query, 
+                sinhala: sinhala || '', 
+                prefix: prefix || '', 
+                timestamp: Date.now() 
+            });
+            
+            if (history.length > 100) {
+                history.pop();
+            }
+            
+            saveSearchHistory(history);
+            renderSearchHistory();
+        }
+
+        function removeSearchHistory(index) {
+            const history = getSearchHistory();
+            history.splice(index, 1);
+            saveSearchHistory(history);
+            renderSearchHistory();
+        }
+
+        function clearSearchHistory() {
+            localStorage.removeItem('dictionary_search_history');
+            renderSearchHistory();
+        }
+
+        function toggleFavoriteFromHistory(query, btn) {
+            const historyItem = getSearchHistory().find(item => item.query === query);
+            if (!historyItem || !historyItem.sinhala || !historyItem.prefix) {
+                alert('无法收藏：该搜索记录不包含完整的词条信息');
+                return;
+            }
+
+            const favorites = getFavorites();
+            const existingIndex = favorites.findIndex(fav => 
+                fav.english === query && fav.sinhala === historyItem.sinhala && fav.prefix === historyItem.prefix
+            );
+            
+            if (existingIndex >= 0) {
+                favorites.splice(existingIndex, 1);
+                btn.innerHTML = '🤍';
+            } else {
+                favorites.push({ 
+                    english: query, 
+                    sinhala: historyItem.sinhala, 
+                    prefix: historyItem.prefix, 
+                    timestamp: Date.now() 
+                });
+                btn.innerHTML = '❤️';
+            }
+            
+            saveFavorites(favorites);
+        }
+
+        function isFavoriteQuery(query) {
+            const historyItem = getSearchHistory().find(item => item.query === query);
+            if (!historyItem || !historyItem.sinhala || !historyItem.prefix) return false;
+            
+            const favorites = getFavorites();
+            return favorites.some(fav => 
+                fav.english === query && 
+                fav.sinhala === historyItem.sinhala && 
+                fav.prefix === historyItem.prefix
+            );
+        }
+
+        function showSearchHistory() {
+            const dropdown = document.getElementById('searchHistoryDropdown');
+            dropdown.classList.add('active');
+        }
+
+        function hideSearchHistory() {
+            const dropdown = document.getElementById('searchHistoryDropdown');
+            dropdown.classList.remove('active');
+        }
+
+        function renderSearchHistory() {
+            const history = getSearchHistory();
+            const list = document.getElementById('searchHistoryList');
+            const header = document.getElementById('searchHistoryHeader');
+            
+            if (history.length === 0) {
+                header.style.display = 'none';
+                list.innerHTML = '<li class="search-history-empty">暂无搜索记录</li>';
+                return;
+            }
+            
+            header.style.display = 'flex';
+            list.innerHTML = history.map((item, index) => {
+                const timeStr = formatTime(item.timestamp);
+                const isFav = isFavoriteQuery(item.query);
+                return `
+                    <li class="search-history-item" onclick="searchFromHistory('${escapeHtml(item.query)}')">
+                        <span class="search-history-text">${escapeHtml(item.query)}</span>
+                        <span class="search-history-time">${timeStr}</span>
+                        <div class="search-history-actions">
+                            <button class="search-history-action-btn favorite" onclick="event.stopPropagation(); toggleFavoriteFromHistory('${escapeHtml(item.query)}', this)">
+                                ${isFav ? '❤️' : '🤍'}
+                            </button>
+                            <button class="search-history-action-btn delete" onclick="event.stopPropagation(); removeSearchHistory(${index})">
+                                🗑️
+                            </button>
+                        </div>
+                    </li>
+                `;
+            }).join('');
+        }
+
+        function formatTime(timestamp) {
+            const now = Date.now();
+            const diff = now - timestamp;
+            
+            const minutes = Math.floor(diff / 60000);
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(diff / 86400000);
+            
+            if (minutes < 1) return '刚刚';
+            if (minutes < 60) return `${minutes}分钟前`;
+            if (hours < 24) return `${hours}小时前`;
+            if (days < 7) return `${days}天前`;
+            
+            const date = new Date(timestamp);
+            return `${date.getMonth() + 1}/${date.getDate()}`;
+        }
+
+        function searchFromHistory(query) {
+            document.getElementById('searchInput').value = query;
+            hideSearchHistory();
+            performSearch();
+        }
+
+        // HTML 转义
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 显示错误
+        function showError(message) {
+            document.getElementById('resultsList').innerHTML = `
+                <div class="empty-state" style="color: var(--accent);">
+                    <div class="empty-state-icon">⚠️</div>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        // 启动应用
+        init();
+    </script>
+</body>
+</html>
