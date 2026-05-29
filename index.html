@@ -109,6 +109,287 @@
             letter-spacing: 0.1em;
         }
 
+        .header-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .favorites-btns {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .favorites-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid transparent;
+            border-radius: 12px;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: white;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .favorites-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .favorites-btn.active {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .favorites-icon {
+            font-size: 1.25rem;
+        }
+
+        .favorites-count {
+            background: rgba(255,255,255,0.3);
+            padding: 0.125rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .favorites-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            max-width: 90vw;
+            height: 100vh;
+            background: var(--card-bg);
+            box-shadow: -4px 0 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .favorites-panel.active {
+            right: 0;
+        }
+
+        .favorites-panel-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .favorites-panel-header h3 {
+            margin: 0;
+            font-size: 1.125rem;
+            color: var(--text);
+        }
+
+        .favorites-panel-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 0.25rem;
+            line-height: 1;
+        }
+
+        .favorites-panel-close:hover {
+            color: var(--accent);
+        }
+
+        .favorites-panel-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .favorites-empty {
+            text-align: center;
+            color: var(--text-light);
+            padding: 2rem;
+        }
+
+        .favorites-item {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .favorites-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .favorites-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .favorites-item-word {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .favorites-item-sinhala {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .favorites-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .favorites-item-time {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .favorites-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .favorites-item-btn {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            transition: all 0.2s;
+        }
+
+        .favorites-item-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .favorites-item-btn.delete:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(233, 69, 96, 0.1);
+        }
+
+        .favorites-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .favorites-overlay.active {
+            display: block;
+        }
+
+        .favorites-group {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .favorites-group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .favorites-group-main {
+            flex: 1;
+        }
+
+        .favorites-group-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .favorites-group-sinhala {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            line-height: 1.5;
+        }
+
+        .favorites-group-count {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            background: var(--accent);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .favorites-group-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .favorites-group-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .favorites-group-expand {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.35rem 0.75rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        .favorites-group-expand:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .favorites-group-items {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--border);
+            display: none;
+        }
+
+        .favorites-group-item {
+            padding: 0.75rem;
+            background: rgba(0,0,0,0.03);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .favorites-group-item:last-child {
+            margin-bottom: 0;
+        }
+
         /* Search Section */
         .search-section {
             max-width: 800px;
@@ -399,6 +680,105 @@
         .result-item.exact-match {
             border-left-color: var(--gold);
             background: linear-gradient(135deg, #fffef0 0%, #ffffff 100%);
+        }
+
+        .result-group {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .result-group:hover {
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--accent);
+        }
+
+        .result-group.expanded {
+            border-left-color: var(--gold);
+        }
+
+        .result-group-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .result-group-main {
+            flex: 1;
+        }
+
+        .result-group-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-group-others {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-family: 'Noto Sans Sinhala', sans-serif;
+            line-height: 1.6;
+        }
+
+        .result-group-count {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--bg);
+            border-radius: 20px;
+            color: var(--text-light);
+        }
+
+        .result-group-expand {
+            background: none;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--accent);
+            transition: all 0.2s;
+            margin-top: 0.75rem;
+        }
+
+        .result-group-expand:hover {
+            background: var(--bg);
+            border-color: var(--accent);
+        }
+
+        .result-group-items {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: none;
+        }
+
+        .result-group.expanded .result-group-items {
+            display: block;
+        }
+
+        .result-group-item {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: var(--bg);
+            border-radius: 8px;
+        }
+
+        .result-group-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-group-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
         }
 
         .result-header {
@@ -772,6 +1152,16 @@
             text-overflow: ellipsis;
         }
 
+        .search-history-translations {
+            flex: 2;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-left: 0.5rem;
+        }
+
         .search-history-time {
             font-size: 0.75rem;
             color: var(--text-light);
@@ -782,11 +1172,14 @@
             display: flex;
             align-items: center;
             gap: 0.25rem;
+        }
+
+        .search-history-action-btn.delete {
             opacity: 0;
             transition: opacity 0.2s;
         }
 
-        .search-history-item:hover .search-history-actions {
+        .search-history-item:hover .search-history-action-btn.delete {
             opacity: 1;
         }
 
@@ -858,12 +1251,20 @@
             font-size: 0.9rem;
             color: var(--text);
             font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .suggestion-sinhala {
+        .suggestion-translations {
+            flex: 2;
             font-size: 0.85rem;
             color: var(--text-light);
             font-family: 'Noto Sans Sinhala', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-left: 0.5rem;
         }
 
         .suggestion-prefix {
@@ -873,6 +1274,28 @@
             border-radius: 4px;
             color: var(--text-light);
             margin-left: 0.5rem;
+        }
+
+        .suggestion-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .suggestion-action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            color: var(--text-light);
+        }
+
+        .suggestion-action-btn:hover {
+            color: var(--gold);
+            background: rgba(244, 208, 63, 0.1);
         }
 
         /* Scrollbar */
@@ -899,6 +1322,16 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
+            <div class="favorites-btns">
+                <button class="favorites-btn active" id="favoritesBtnEnSi" onclick="toggleFavoritesPanel('en-si')">
+                    <span class="favorites-icon">🇬🇧</span>
+                    <span class="favorites-count" id="favoritesCountEnSi">0</span>
+                </button>
+                <button class="favorites-btn" id="favoritesBtnSiEn" onclick="toggleFavoritesPanel('si-en')">
+                    <span class="favorites-icon">🇱🇰</span>
+                    <span class="favorites-count" id="favoritesCountSiEn">0</span>
+                </button>
+            </div>
             <h1>සිංහල-ඉංග්‍රීසි ශබ්දකෝෂය</h1>
             <p class="subtitle">Sinhala-English Dictionary</p>
             <div class="stats">
@@ -913,6 +1346,18 @@
             </div>
         </div>
     </header>
+
+    <!-- Favorites Panel -->
+    <div class="favorites-panel" id="favoritesPanel">
+        <div class="favorites-panel-header">
+            <h3 id="favoritesTitle">🇬🇧 英翻僧收藏本</h3>
+            <button class="favorites-panel-close" onclick="toggleFavoritesPanel()">×</button>
+        </div>
+        <div class="favorites-panel-content" id="favoritesPanelContent">
+            <div class="favorites-empty">暂无收藏</div>
+        </div>
+    </div>
+    <div class="favorites-overlay" id="favoritesOverlay" onclick="toggleFavoritesPanel()"></div>
 
     <!-- Search Section -->
     <section class="search-section">
@@ -1042,17 +1487,300 @@
             ...DICTIONARY_DATA_3,
             ...DICTIONARY_DATA_4
         ];
-        // 释放临时变量以节省内存
-        DICTIONARY_DATA_1 = null;
-        DICTIONARY_DATA_2 = null;
-        DICTIONARY_DATA_3 = null;
-        DICTIONARY_DATA_4 = null;
+        // 注意：外部文件中声明的const变量无法重新赋值，无需手动释放
     </script>
 
     <script>
         // ============================================
         // 应用逻辑
         // ============================================
+        
+        // 收藏本功能 - 支持两个收藏本
+        let currentFavoritesBook = 'en-si'; // 当前打开的收藏本
+        
+        function toggleFavoritesPanel(bookType = currentFavoritesBook) {
+            const panel = document.getElementById('favoritesPanel');
+            const overlay = document.getElementById('favoritesOverlay');
+            const title = document.getElementById('favoritesTitle');
+            
+            // 更新当前收藏本类型
+            currentFavoritesBook = bookType;
+            
+            // 更新按钮状态
+            document.getElementById('favoritesBtnEnSi').classList.toggle('active', bookType === 'en-si');
+            document.getElementById('favoritesBtnSiEn').classList.toggle('active', bookType === 'si-en');
+            
+            // 更新标题
+            title.textContent = bookType === 'en-si' ? '🇬🇧 英翻僧收藏本' : '🇱🇰 僧翻英收藏本';
+            
+            panel.classList.toggle('active');
+            overlay.classList.toggle('active');
+            
+            if (panel.classList.contains('active')) {
+                renderFavoritesPanel(bookType);
+            }
+        }
+
+        function updateFavoritesCount() {
+            // 更新英翻僧收藏本计数
+            const favoritesEnSi = getFavorites('en-si');
+            const countEnSi = document.getElementById('favoritesCountEnSi');
+            if (countEnSi) {
+                const groupedEnSi = groupFavoritesByStem(favoritesEnSi, false);
+                countEnSi.textContent = groupedEnSi.size;
+            }
+            
+            // 更新僧翻英收藏本计数
+            const favoritesSiEn = getFavorites('si-en');
+            const countSiEn = document.getElementById('favoritesCountSiEn');
+            if (countSiEn) {
+                const groupedSiEn = groupFavoritesByStem(favoritesSiEn, true);
+                countSiEn.textContent = groupedSiEn.size;
+            }
+        }
+
+        function renderFavoritesPanel(bookType = 'en-si') {
+            const content = document.getElementById('favoritesPanelContent');
+            const favorites = getFavorites(bookType);
+            const isSiEn = bookType === 'si-en';
+            
+            if (favorites.length === 0) {
+                content.innerHTML = '<div class="favorites-empty">暂无收藏</div>';
+                return;
+            }
+            
+            // 按词干分组
+            const grouped = groupFavoritesByStem(favorites, isSiEn);
+            
+            // 按时间排序（最新的在前）
+            const sortedGroups = Array.from(grouped.values()).sort((a, b) => {
+                const aLatest = Math.max(...a.items.map(item => item.timestamp || 0));
+                const bLatest = Math.max(...b.items.map(item => item.timestamp || 0));
+                return bLatest - aLatest;
+            });
+            
+            content.innerHTML = sortedGroups.map((group, groupIndex) => {
+                const { stem, items } = group;
+                const count = items.length;
+                const latestTime = Math.max(...items.map(item => item.timestamp || 0));
+                const timeStr = latestTime ? formatTime(latestTime) : '';
+                
+                // 构建显示内容
+                let displayTexts = [];
+                if (isSiEn) {
+                    // 僧翻英收藏本：显示英文+词性
+                    displayTexts = items.map(item => `${item.english} (${item.prefix})`);
+                } else {
+                    // 英翻僧收藏本：显示僧伽罗语+词性
+                    displayTexts = items.map(item => `${item.sinhala} (${item.prefix})`);
+                }
+                
+                return `
+                    <div class="favorites-group">
+                        <div class="favorites-group-header">
+                            <div class="favorites-group-main">
+                                <div class="favorites-group-title">${escapeHtml(stem)}</div>
+                                <div class="favorites-group-sinhala">${escapeHtml(displayTexts.join('; '))}</div>
+                            </div>
+                        </div>
+                        <div class="favorites-group-footer">
+                            <span class="favorites-item-time">${timeStr}</span>
+                            <div class="favorites-group-actions">
+                                <button class="favorites-item-btn" onclick="viewFavoriteGroup(${groupIndex}, '${bookType}')">查看</button>
+                                <button class="favorites-item-btn delete" onclick="removeFavoriteGroup(${groupIndex}, '${bookType}')">删除全部</button>
+                            </div>
+                        </div>
+                        <button class="favorites-group-expand" onclick="toggleFavoritesGroupExpand(${groupIndex})">
+                            展开查看详情
+                        </button>
+                        <div class="favorites-group-items" id="fav-group-${groupIndex}">
+                            ${items.map((item, itemIndex) => {
+                                const itemTime = item.timestamp ? formatTime(item.timestamp) : '';
+                                return `
+                                    <div class="favorites-group-item">
+                                        <div class="favorites-item-header">
+                                            <span class="favorites-item-word">${escapeHtml(item.english)}</span>
+                                            <span class="result-prefix">${item.prefix}</span>
+                                        </div>
+                                        <div class="favorites-item-sinhala">${escapeHtml(item.sinhala)}</div>
+                                        <div class="favorites-item-footer">
+                                            <span class="favorites-item-time">${itemTime}</span>
+                                            <div class="favorites-item-actions">
+                                                <button class="favorites-item-btn" onclick="viewFavoriteItem(${groupIndex}, ${itemIndex}, '${bookType}')">查看</button>
+                                                <button class="favorites-item-btn delete" onclick="removeFavoriteItem(${groupIndex}, ${itemIndex}, '${bookType}')">删除</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 按词干分组收藏
+        function groupFavoritesByStem(favorites, isSiEn = false) {
+            const grouped = new Map();
+            
+            favorites.forEach(fav => {
+                // 根据收藏本类型决定分组键
+                let stem;
+                if (isSiEn) {
+                    // 僧翻英收藏本：按僧伽罗语分组
+                    stem = fav.sinhala.toLowerCase();
+                } else {
+                    // 英翻僧收藏本：按英文词干分组
+                    stem = extractWordStem(fav.english).toLowerCase();
+                }
+                
+                if (!grouped.has(stem)) {
+                    grouped.set(stem, {
+                        stem,
+                        items: []
+                    });
+                }
+                grouped.get(stem).items.push(fav);
+            });
+            
+            return grouped;
+        }
+
+        function viewFavorite(index, bookType = 'en-si') {
+            const favorites = getFavorites(bookType);
+            const sortedFavorites = [...favorites].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+            const fav = sortedFavorites[index];
+            
+            if (fav) {
+                // 设置搜索词并执行搜索
+                document.getElementById('searchInput').value = bookType === 'si-en' ? fav.sinhala : fav.english;
+                toggleFavoritesPanel();
+                performSearch(true, fav.sinhala, fav.prefix);
+            }
+        }
+
+        function removeFavorite(index, bookType = 'en-si') {
+            const favorites = getFavorites(bookType);
+            const sortedFavorites = [...favorites].sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+            const fav = sortedFavorites[index];
+            
+            if (fav) {
+                const removeIndex = favorites.findIndex(f => 
+                    f.english === fav.english && f.sinhala === fav.sinhala && f.prefix === fav.prefix
+                );
+                
+                if (removeIndex >= 0) {
+                    favorites.splice(removeIndex, 1);
+                    saveFavorites(favorites, bookType);
+                    updateFavoritesCount();
+                    renderFavoritesPanel(bookType);
+                }
+            }
+        }
+
+        // 查看收藏分组
+        function viewFavoriteGroup(groupIndex, bookType = 'en-si') {
+            const favorites = getFavorites(bookType);
+            const grouped = groupFavoritesByStem(favorites, bookType === 'si-en');
+            const sortedGroups = Array.from(grouped.values()).sort((a, b) => {
+                const aLatest = Math.max(...a.items.map(item => item.timestamp || 0));
+                const bLatest = Math.max(...b.items.map(item => item.timestamp || 0));
+                return bLatest - aLatest;
+            });
+            
+            const group = sortedGroups[groupIndex];
+            if (group && group.items.length > 0) {
+                const firstItem = group.items[0];
+                // 根据收藏本类型决定搜索词
+                const searchWord = bookType === 'si-en' ? group.stem : group.stem;
+                document.getElementById('searchInput').value = searchWord;
+                toggleFavoritesPanel();
+                performSearch(true, firstItem.sinhala, firstItem.prefix);
+            }
+        }
+
+        // 删除整个收藏分组
+        function removeFavoriteGroup(groupIndex, bookType = 'en-si') {
+            const favorites = getFavorites(bookType);
+            const grouped = groupFavoritesByStem(favorites, bookType === 'si-en');
+            const sortedGroups = Array.from(grouped.values()).sort((a, b) => {
+                const aLatest = Math.max(...a.items.map(item => item.timestamp || 0));
+                const bLatest = Math.max(...b.items.map(item => item.timestamp || 0));
+                return bLatest - aLatest;
+            });
+            
+            const group = sortedGroups[groupIndex];
+            if (group) {
+                // 删除该分组的所有词条
+                group.items.forEach(item => {
+                    const idx = favorites.findIndex(f => 
+                        f.english === item.english && f.sinhala === item.sinhala && f.prefix === item.prefix
+                    );
+                    if (idx >= 0) {
+                        favorites.splice(idx, 1);
+                    }
+                });
+                
+                saveFavorites(favorites, bookType);
+                updateFavoritesCount();
+                renderFavoritesPanel(bookType);
+            }
+        }
+
+        // 查看分组中的单个词条
+        function viewFavoriteItem(groupIndex, itemIndex, bookType = 'en-si') {
+            const favorites = getFavorites(bookType);
+            const grouped = groupFavoritesByStem(favorites, bookType === 'si-en');
+            const sortedGroups = Array.from(grouped.values()).sort((a, b) => {
+                const aLatest = Math.max(...a.items.map(item => item.timestamp || 0));
+                const bLatest = Math.max(...b.items.map(item => item.timestamp || 0));
+                return bLatest - aLatest;
+            });
+            
+            const group = sortedGroups[groupIndex];
+            if (group && group.items[itemIndex]) {
+                const item = group.items[itemIndex];
+                // 根据收藏本类型决定搜索词
+                const searchWord = bookType === 'si-en' ? item.sinhala : item.english;
+                document.getElementById('searchInput').value = searchWord;
+                toggleFavoritesPanel();
+                performSearch(true, item.sinhala, item.prefix);
+            }
+        }
+
+        // 删除分组中的单个词条
+        function removeFavoriteItem(groupIndex, itemIndex, bookType = 'en-si') {
+            const favorites = getFavorites(bookType);
+            const grouped = groupFavoritesByStem(favorites, bookType === 'si-en');
+            const sortedGroups = Array.from(grouped.values()).sort((a, b) => {
+                const aLatest = Math.max(...a.items.map(item => item.timestamp || 0));
+                const bLatest = Math.max(...b.items.map(item => item.timestamp || 0));
+                return bLatest - aLatest;
+            });
+            
+            const group = sortedGroups[groupIndex];
+            if (group && group.items[itemIndex]) {
+                const item = group.items[itemIndex];
+                const idx = favorites.findIndex(f => 
+                    f.english === item.english && f.sinhala === item.sinhala && f.prefix === item.prefix
+                );
+                
+                if (idx >= 0) {
+                    favorites.splice(idx, 1);
+                    saveFavorites(favorites, bookType);
+                    updateFavoritesCount();
+                    renderFavoritesPanel(bookType);
+                }
+            }
+        }
+
+        // 切换收藏分组展开/收起
+        function toggleFavoritesGroupExpand(groupIndex) {
+            const groupEl = document.getElementById(`fav-group-${groupIndex}`);
+            if (groupEl) {
+                groupEl.style.display = groupEl.style.display === 'block' ? 'none' : 'block';
+            }
+        }
         
         const ITEMS_PER_PAGE = 20;
         let currentPage = 1;
@@ -1136,6 +1864,9 @@
                 legendItems.appendChild(item);
             });
 
+            // 更新收藏计数
+            updateFavoritesCount();
+
             // 绑定回车键搜索
             document.getElementById('searchInput').addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') performSearch(false);
@@ -1175,6 +1906,65 @@
             } else {
                 clearSuggestions();
             }
+        }
+
+        // 英文搜索函数（精确匹配）
+        function searchEnglish(query, mode = 'exact') {
+            const searchQuery = query.toLowerCase();
+            const results = [];
+            
+            DICTIONARY_DATA.forEach(item => {
+                const english = (item.english || item.en || '').toLowerCase();
+                let match = false;
+                
+                switch (mode) {
+                    case 'exact':
+                        match = english === searchQuery;
+                        break;
+                    case 'startsWith':
+                        match = english.startsWith(searchQuery);
+                        break;
+                    case 'contains':
+                        match = english.includes(searchQuery);
+                        break;
+                }
+                
+                if (match) {
+                    results.push({
+                        item,
+                        score: 100,
+                        isExact: english === searchQuery,
+                        english: item.english || item.en || '',
+                        sinhala: item.sinhala || item.si || '',
+                        prefix: item.prefix || item.type || ''
+                    });
+                }
+            });
+            
+            return results;
+        }
+
+        // 僧伽罗语智能搜索函数
+        function searchBySinhalaSmart(query) {
+            const results = [];
+            
+            DICTIONARY_DATA.forEach(item => {
+                const sinhala = item.sinhala || item.si || '';
+                const siMatch = sinhalaMatchScore(query, sinhala);
+                
+                if (siMatch) {
+                    results.push({
+                        item,
+                        score: siMatch.score,
+                        isExact: siMatch.score === 100,
+                        english: item.english || item.en || '',
+                        sinhala: sinhala,
+                        prefix: item.prefix || item.type || ''
+                    });
+                }
+            });
+            
+            return results.sort((a, b) => b.score - a.score);
         }
 
         // 获取推荐词条
@@ -1230,7 +2020,40 @@
             });
 
             scoredResults.sort((a, b) => b.score - a.score);
-            return scoredResults.slice(0, 20);
+            
+            // 按组返回结果
+            return groupSuggestionsByStem(scoredResults, isSinhalaQuery);
+        }
+
+        // 按词干分组推荐词条
+        function groupSuggestionsByStem(results, isSinhalaQuery) {
+            const grouped = new Map();
+            
+            results.forEach(result => {
+                let groupKey;
+                if (isSinhalaQuery) {
+                    groupKey = result.sinhala.toLowerCase();
+                } else {
+                    groupKey = extractWordStem(result.english).toLowerCase();
+                }
+                
+                if (!grouped.has(groupKey)) {
+                    grouped.set(groupKey, {
+                        mainWord: isSinhalaQuery ? result.sinhala : result.english,
+                        isSinhalaQuery,
+                        items: [],
+                        bestScore: result.score
+                    });
+                }
+                
+                const group = grouped.get(groupKey);
+                group.items.push(result);
+                if (result.score > group.bestScore) {
+                    group.bestScore = result.score;
+                }
+            });
+            
+            return Array.from(grouped.values()).sort((a, b) => b.bestScore - a.bestScore).slice(0, 10);
         }
 
         // 渲染推荐词条
@@ -1238,7 +2061,6 @@
             const header = document.getElementById('suggestionsHeader');
             const list = document.getElementById('suggestionsList');
             const query = document.getElementById('searchInput').value.trim();
-            const isSinhalaQuery = isSinhala(query);
             
             if (suggestions.length === 0) {
                 header.style.display = 'none';
@@ -1247,25 +2069,99 @@
             }
 
             header.style.display = 'flex';
-            list.innerHTML = suggestions.map(item => {
+            list.innerHTML = suggestions.map(group => {
+                const { mainWord, isSinhalaQuery, items } = group;
+                
+                // 构建显示内容
+                let displayTexts = [];
                 if (isSinhalaQuery) {
-                    return `
-                        <li class="suggestion-item" onclick="searchFromSuggestion('${escapeHtml(item.sinhala)}', '${escapeHtml(item.sinhala)}', '${escapeHtml(item.prefix)}')">
-                            <span class="suggestion-word">${escapeHtml(item.sinhala)}</span>
-                            <span class="suggestion-sinhala">${escapeHtml(item.english)}</span>
-                            <span class="suggestion-prefix">${item.prefix}</span>
-                        </li>
-                    `;
+                    displayTexts = items.map(item => `${item.english} (${item.prefix})`);
                 } else {
-                    return `
-                        <li class="suggestion-item" onclick="searchFromSuggestion('${escapeHtml(item.english)}', '${escapeHtml(item.sinhala)}', '${escapeHtml(item.prefix)}')">
-                            <span class="suggestion-word">${escapeHtml(item.english)}</span>
-                            <span class="suggestion-sinhala">${escapeHtml(item.sinhala)}</span>
-                            <span class="suggestion-prefix">${item.prefix}</span>
-                        </li>
-                    `;
+                    displayTexts = items.map(item => `${item.sinhala} (${item.prefix})`);
                 }
+                
+                const fullText = displayTexts.join('; ');
+                const truncatedText = truncateText(fullText, 80);
+                const isFav = isGroupFavoritedForSuggestions(items);
+                
+                return `
+                    <li class="suggestion-item" onclick="searchFromSuggestion('${escapeHtml(mainWord)}', '${escapeHtml(items[0].sinhala)}', '${escapeHtml(items[0].prefix)}')">
+                        <span class="suggestion-word">${escapeHtml(mainWord)}</span>
+                        <span class="suggestion-translations" title="${escapeHtml(fullText)}">${escapeHtml(truncatedText)}</span>
+                        <div class="suggestion-actions">
+                            <button class="suggestion-action-btn" onclick="event.stopPropagation(); toggleFavoriteForSuggestionGroup('${encodeURIComponent(JSON.stringify(items))}', '${encodeURIComponent(mainWord)}', this)">
+                                ${isFav ? '❤️' : '🤍'}
+                            </button>
+                        </div>
+                    </li>
+                `;
             }).join('');
+        }
+
+        // 截断文本并添加省略号
+        function truncateText(text, maxLength) {
+            if (text.length <= maxLength) return text;
+            return text.substring(0, maxLength - 3) + '...';
+        }
+
+        // 检查推荐词条组是否已收藏
+        function isGroupFavoritedForSuggestions(items) {
+            const bookType = items[0] && isSinhala(items[0].sinhala) ? 'si-en' : 'en-si';
+            const favorites = getFavorites(bookType);
+            
+            return items.every(item => 
+                favorites.some(fav => 
+                    fav.english === item.english && fav.sinhala === item.sinhala && fav.prefix === item.prefix
+                )
+            );
+        }
+
+        // 收藏/取消收藏推荐词条组
+        function toggleFavoriteForSuggestionGroup(itemsJson, mainWord, btn) {
+            const items = JSON.parse(decodeURIComponent(itemsJson));
+            const bookType = items[0] && isSinhala(items[0].sinhala) ? 'si-en' : 'en-si';
+            
+            // 使用公共的收藏处理函数
+            handleFavoriteToggle(items, bookType, btn);
+            
+            // 更新计数
+            updateFavoritesCount();
+            
+            // 刷新界面
+            renderFavoritesPanel(bookType);
+            
+            // 刷新预览界面的收藏状态
+            const query = decodeURIComponent(mainWord);
+            const suggestions = getSuggestions(query);
+            renderSuggestions(suggestions);
+            
+            // 刷新搜索记录的收藏状态
+            renderSearchHistory();
+        }
+
+        function isFavoriteForSuggestion(english, sinhala, prefix) {
+            const favorites = getFavorites();
+            return favorites.some(fav => 
+                fav.english === english && fav.sinhala === sinhala && fav.prefix === prefix
+            );
+        }
+
+        function toggleFavoriteForSuggestion(english, sinhala, prefix, btn) {
+            const favorites = getFavorites();
+            const existingIndex = favorites.findIndex(fav => 
+                fav.english === english && fav.sinhala === sinhala && fav.prefix === prefix
+            );
+            
+            if (existingIndex >= 0) {
+                favorites.splice(existingIndex, 1);
+                btn.innerHTML = '🤍';
+            } else {
+                favorites.push({ english, sinhala, prefix, timestamp: Date.now() });
+                btn.innerHTML = '❤️';
+            }
+            
+            saveFavorites(favorites);
+            updateFavoritesCount();
         }
 
         // 清除推荐词条
@@ -1279,7 +2175,11 @@
             document.getElementById('searchInput').value = word;
             hideSearchHistory();
             clearSuggestions();
-            performSearch(true, sinhala, prefix);
+            // 确定英文和僧伽罗语
+            const isSi = isSinhala(word);
+            const english = isSi ? '' : word;
+            const sinhalaText = isSi ? word : sinhala;
+            performSearch(true, sinhalaText, prefix, english);
         }
 
         // 切换相似度滑块显示并自动搜索
@@ -1309,18 +2209,61 @@
             return /[\u4e00-\u9fa5]/.test(text);
         }
 
+        // ========== 清洗翻译结果，只保留词语形式 ==========
+        function cleanToWordForm(text, targetLang) {
+            if (!text) return '';
+
+            let cleaned = text.trim();
+
+            // 1. 去除所有标点符号（保留字母、数字、僧伽罗语字符、汉字、空格、连字符）
+            cleaned = cleaned.replace(/[.,!?;:、。，！？；：""''《》【】()\[\]{}<>…—～·]/g, '');
+
+            // 2. 如果目标是英文，去除末尾多余的标点
+            if (targetLang === 'en') {
+                cleaned = cleaned.replace(/[.!?]+$/, '');
+            }
+
+            // 3. 如果目标是中文，去除多余的句号、逗号等
+            if (targetLang === 'zh') {
+                cleaned = cleaned.replace(/[。，！？、；：]$/, '');
+            }
+
+            // 4. 处理 API 可能返回 "eat." 这种带句点的形式
+            cleaned = cleaned.replace(/\.$/, '');
+
+            // 5. 处理 "to eat" 这种不定式形式 → 去除 "to "
+            if (targetLang === 'en' && cleaned.toLowerCase().startsWith('to ')) {
+                cleaned = cleaned.substring(3);
+            }
+
+            // 6. 去除首尾空格，并将多个空格合并为一个
+            cleaned = cleaned.trim().replace(/\s+/g, ' ');
+
+            // 7. 如果清理后为空，返回原始文本的清洗版本
+            if (cleaned === '') {
+                cleaned = text.replace(/[^\w\u0D80-\u0DFF\u4e00-\u9fa5]/g, '').trim();
+            }
+
+            return cleaned;
+        }
+
         // 调用 MyMemory API 翻译
         async function translateWithMyMemory(text, fromLang, toLang) {
             const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${fromLang}|${toLang}`;
-            
+
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                
+
                 if (data.responseStatus === 200) {
+                    // 清洗翻译结果为词语形式
+                    const targetLang = toLang === 'zh-CN' ? 'zh' : 'en';
+                    const cleanedTranslation = cleanToWordForm(data.responseData.translatedText, targetLang);
+
                     return {
                         success: true,
-                        translation: data.responseData.translatedText,
+                        translation: cleanedTranslation,
+                        original: data.responseData.translatedText,
                         match: data.responseData.match
                     };
                 } else {
@@ -1559,7 +2502,7 @@
         }
 
         // 执行搜索
-        async function performSearch(recordHistory = false, historySinhala = '', historyPrefix = '') {
+        async function performSearch(recordHistory = false, historySinhala = '', historyPrefix = '', historyEnglish = '') {
             const rawQuery = document.getElementById('searchInput').value.trim();
             const prefixFilter = document.getElementById('prefixFilter').value;
             const matchMode = document.querySelector('input[name="matchMode"]:checked').value;
@@ -1599,7 +2542,13 @@
                 if (result.success) {
                     currentTranslatedQuery = result.translation.toLowerCase();
                     searchQuery = currentTranslatedQuery;
-                    showTranslationInfo(`中文 "${rawQuery}" → 英文 "${result.translation}" (匹配度: ${(result.match * 100).toFixed(1)}%)`);
+                    
+                    // 如果清洗前后不同，显示对比
+                    if (result.original && result.original !== result.translation) {
+                        showTranslationInfo(`中文 "${rawQuery}" → 英译 "${result.original}" → 词语 "${result.translation}" (匹配度: ${(result.match * 100).toFixed(1)}%)`);
+                    } else {
+                        showTranslationInfo(`中文 "${rawQuery}" → 英文 "${result.translation}" (匹配度: ${(result.match * 100).toFixed(1)}%)`);
+                    }
                 } else {
                     showTranslationInfo(`翻译失败: ${result.error}，将直接搜索中文`);
                     currentTranslatedQuery = null;
@@ -1699,14 +2648,88 @@
                 return b.score - a.score;
             });
 
-            currentResults = scoredResults;
+            // 合并词条（按搜索词类型决定合并基准）
+            const isSinhalaQuery = isSinhala(rawQuery);
+            const groupedResults = groupResults(scoredResults, isSinhalaQuery, rawQuery);
+
+            currentResults = groupedResults;
             currentPage = 1;
             renderResults();
             
             // 只有从推荐词条点击搜索时才记录搜索历史
-            if (recordHistory && historySinhala && historyPrefix) {
-                addSearchHistory(rawQuery, historySinhala, historyPrefix);
+            if (recordHistory) {
+                addSearchHistory(rawQuery, historySinhala || '', historyPrefix || '', historyEnglish || '');
             }
+        }
+
+        // 按搜索词类型合并词条
+        function groupResults(scoredResults, isSinhalaQuery, rawQuery) {
+            const grouped = new Map();
+            
+            scoredResults.forEach(result => {
+                // 确定分组键：使用搜索方向对应的语言作为键
+                // 英文搜索时按英文词干分组，僧伽罗语搜索时按僧伽罗语词干分组
+                let groupKey;
+                let mainWord;
+                if (isSinhalaQuery) {
+                    // 僧伽罗语搜索，按僧伽罗语词干分组
+                    groupKey = result.sinhala.toLowerCase();
+                    mainWord = result.sinhala;
+                } else {
+                    // 英文搜索，按英文词干分组（去掉词性标记）
+                    const englishStem = extractWordStem(result.english);
+                    groupKey = englishStem.toLowerCase();
+                    mainWord = result.english;
+                }
+                
+                if (!grouped.has(groupKey)) {
+                    grouped.set(groupKey, {
+                        groupKey,
+                        isSinhalaQuery,
+                        mainWord,
+                        alternatives: [],
+                        bestMatch: result,
+                        allEnglish: [],
+                        allSinhala: [],
+                        allPrefixes: new Set(),
+                        existingKeys: new Set()  // 用于去重
+                    });
+                }
+                
+                const group = grouped.get(groupKey);
+                
+                // 去重：使用 english+sinhala+prefix 作为唯一键
+                const uniqueKey = `${result.english}|${result.sinhala}|${result.prefix}`;
+                if (group.existingKeys.has(uniqueKey)) {
+                    return;  // 跳过重复项
+                }
+                group.existingKeys.add(uniqueKey);
+                
+                group.alternatives.push(result);
+                group.allEnglish.push(result.english);
+                group.allSinhala.push(result.sinhala);
+                group.allPrefixes.add(result.prefix);
+                
+                // 更新最佳匹配
+                if (result.score > group.bestMatch.score || 
+                    (result.score === group.bestMatch.score && result.isExact)) {
+                    group.bestMatch = result;
+                }
+            });
+            
+            // 转换为数组并排序
+            return Array.from(grouped.values()).sort((a, b) => {
+                if (a.bestMatch.isExact && !b.bestMatch.isExact) return -1;
+                if (!a.bestMatch.isExact && b.bestMatch.isExact) return 1;
+                return b.bestMatch.score - a.bestMatch.score;
+            });
+        }
+
+        // 提取单词词干（去掉括号内的词性标记）
+        function extractWordStem(word) {
+            if (!word) return '';
+            // 去掉括号内的内容，如 "doctor (n.)" -> "doctor"
+            return word.replace(/\s*\([^)]+\)/g, '').trim();
         }
 
         // 渲染结果
@@ -1737,22 +2760,113 @@
 
             // 渲染结果列表
             resultsList.innerHTML = pageResults.map((result, index) => {
-                const { english, sinhala, prefix, score, isExact, matchType } = result;
                 const globalIndex = start + index;
                 
-                let scoreClass = 'low';
-                if (score >= 90) scoreClass = 'high';
-                else if (score >= 70) scoreClass = 'medium';
-                
-                const isFavorited = isFavorite(english, sinhala, prefix);
-                return `
+                // 判断是否是分组结果
+                if (result.alternatives && result.alternatives.length > 1) {
+                    return renderGroupResult(result, globalIndex);
+                } else {
+                    return renderSingleResult(result.bestMatch, globalIndex);
+                }
+            }).join('');
+
+            // 渲染分页
+            renderPagination(totalPages);
+        }
+
+        // 渲染分组结果（相册样式）
+        function renderGroupResult(group, globalIndex) {
+            const { isSinhalaQuery, alternatives, bestMatch, mainWord } = group;
+            const count = alternatives.length;
+            const mainSinhala = bestMatch.sinhala;
+            const isExact = bestMatch.isExact;
+            
+            // 构建显示内容：根据搜索方向显示不同的格式
+            let displayText = '';
+            if (isSinhalaQuery) {
+                // 僧伽罗语搜索：显示所有英文翻译
+                displayText = alternatives.map(item => `${item.english} (${item.prefix})`).join('; ');
+            } else {
+                // 英文搜索：显示所有僧伽罗语翻译
+                displayText = alternatives.map(item => `${item.sinhala} (${item.prefix})`).join('; ');
+            }
+            
+            // 检查整个分组是否已收藏
+            const isFavorited = isGroupFavorited(group);
+            
+            return `
+                <div class="result-group" id="group-${globalIndex}">
+                    <div class="result-group-header">
+                        <div class="result-group-main">
+                            <div class="result-group-title">${escapeHtml(mainWord)}</div>
+                            <div class="result-group-others">${escapeHtml(displayText)}</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="result-group-count">${count}个词义</span>
+                            <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
+                                    onclick="toggleFavoriteForGroup(${globalIndex}, this)"
+                                    title="${isFavorited ? '取消收藏' : '收藏'}">
+                                ${isFavorited ? '❤️' : '🤍'}
+                            </button>
+                        </div>
+                    </div>
+                    <button class="result-group-expand" onclick="toggleGroupExpand(${globalIndex})">
+                        展开查看详情
+                    </button>
+                    <div class="result-group-items">
+                        ${alternatives.map((alt, idx) => {
+                            const altIndex = globalIndex * 100 + idx;
+                            return `
+                                <div class="result-group-item">
+                                    <div class="result-group-item-header">
+                                        <span class="result-word">${escapeHtml(alt.english)}</span>
+                                        <span class="result-prefix">${alt.prefix}</span>
+                                    </div>
+                                    <div class="result-translation">${escapeHtml(alt.sinhala)}</div>
+                                    <div class="result-similarity">
+                                        <span class="score ${alt.score >= 90 ? 'high' : (alt.score >= 70 ? 'medium' : 'low')}">${alt.matchType}</span>
+                                    </div>
+                                    <div class="chinese-translation">
+                                        <button class="chinese-translation-btn" onclick="showChineseTranslationForAlt('${escapeHtml(alt.english)}', ${altIndex}, this)">
+                                            <span>🇨🇳</span>
+                                            <span>查看中文翻译</span>
+                                        </button>
+                                            <div class="chinese-translation-text" id="chinese-${altIndex}" style="display: none;"></div>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    ${count === 1 ? `
+                        <div class="chinese-translation">
+                            <button class="chinese-translation-btn" onclick="showChineseTranslationForAlt('${escapeHtml(mainWord)}', ${globalIndex * 100}, this)">
+                                <span>🇨🇳</span>
+                                <span>查看中文翻译</span>
+                            </button>
+                            <div class="chinese-translation-text" id="chinese-${globalIndex * 100}" style="display: none;"></div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // 渲染单个结果
+        function renderSingleResult(result, globalIndex) {
+            const { english, sinhala, prefix, score, isExact, matchType } = result;
+            
+            let scoreClass = 'low';
+            if (score >= 90) scoreClass = 'high';
+            else if (score >= 70) scoreClass = 'medium';
+            
+            const isFavorited = isFavoriteForSuggestion(english, sinhala, prefix);
+            return `
                 <div class="result-item ${isExact ? 'exact-match' : ''}">
                     <div class="result-header">
                         <span class="result-word">${escapeHtml(english)}</span>
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <span class="result-prefix" title="${PREFIX_DESCRIPTIONS[prefix] || prefix}">${prefix}</span>
                             <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
-                                    onclick="toggleFavorite(${globalIndex}, this)"
+                                    onclick="toggleFavoriteForSuggestion('${escapeHtml(english)}', '${escapeHtml(sinhala)}', '${escapeHtml(prefix)}', this)"
                                     title="${isFavorited ? '取消收藏' : '收藏'}">
                                 ${isFavorited ? '❤️' : '🤍'}
                             </button>
@@ -1763,17 +2877,115 @@
                         <span class="score ${scoreClass}">${matchType}</span>
                     </div>
                     <div class="chinese-translation">
-                        <button class="chinese-translation-btn" onclick="showChineseTranslation(${globalIndex}, this)">
+                        <button class="chinese-translation-btn" onclick="showChineseTranslationForAlt('${escapeHtml(english)}', ${globalIndex * 100}, this)">
                             <span>🇨🇳</span>
                             <span>查看中文翻译</span>
                         </button>
-                        <div class="chinese-translation-text" id="chinese-${globalIndex}" style="display: none;"></div>
+                        <div class="chinese-translation-text" id="chinese-${globalIndex * 100}" style="display: none;"></div>
                     </div>
                 </div>
-            `}).join('');
+            `;
+        }
 
-            // 渲染分页
-            renderPagination(totalPages);
+        // 切换分组展开/收起
+        function toggleGroupExpand(globalIndex) {
+            const group = document.getElementById(`group-${globalIndex}`);
+            if (group) {
+                group.classList.toggle('expanded');
+                const btn = group.querySelector('.result-group-expand');
+                if (btn) {
+                    if (group.classList.contains('expanded')) {
+                        btn.textContent = '收起';
+                    } else {
+                        btn.textContent = `查看所有 ${group.querySelectorAll('.result-group-item').length} 个词义`;
+                    }
+                }
+            }
+        }
+
+        // 检查分组是否已收藏
+        function isGroupFavorited(group) {
+            if (!group || !group.alternatives) return false;
+            
+            const favorites = getFavorites(group.isSinhalaQuery ? 'si-en' : 'en-si');
+            
+            // 检查是否所有词条都已收藏
+            return group.alternatives.every(alt => 
+                favorites.some(fav => 
+                    fav.english === alt.english && fav.sinhala === alt.sinhala && fav.prefix === alt.prefix
+                )
+            );
+        }
+
+        // 收藏整个分组
+        function toggleFavoriteForGroup(globalIndex, btn) {
+            const group = currentResults[globalIndex];
+            if (!group || !group.alternatives) return;
+            
+            // 根据搜索方向选择收藏本
+            const bookType = group.isSinhalaQuery ? 'si-en' : 'en-si';
+            
+            // 使用公共的收藏处理函数
+            handleFavoriteToggle(group.alternatives, bookType, btn);
+            
+            updateFavoritesCount();
+            
+            // 更新分组内各个词条的收藏状态显示
+            const groupEl = document.getElementById(`group-${globalIndex}`);
+            if (groupEl) {
+                const favButtons = groupEl.querySelectorAll('.favorite-btn');
+                favButtons.forEach(favBtn => {
+                    favBtn.innerHTML = allFavorited ? '🤍' : '❤️';
+                    if (allFavorited) {
+                        favBtn.classList.remove('favorited');
+                    } else {
+                        favBtn.classList.add('favorited');
+                    }
+                });
+            }
+            
+            // 刷新预览界面的收藏状态
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                const suggestions = getSuggestions(query);
+                renderSuggestions(suggestions);
+            }
+            
+            // 刷新搜索记录的收藏状态
+            renderSearchHistory();
+        }
+
+        // 显示中文翻译（用于分组中的词条）
+        async function showChineseTranslationForAlt(english, index, btn) {
+            const textDiv = document.getElementById(`chinese-${index}`);
+            
+            if (textDiv.style.display === 'block') {
+                textDiv.style.display = 'none';
+                btn.innerHTML = '<span>🇨🇳</span><span>查看中文翻译</span>';
+                return;
+            }
+
+            btn.innerHTML = '<span class="loading"></span><span>翻译中...</span>';
+            btn.disabled = true;
+
+            const translation = await translateWithMyMemory(english, 'en', 'zh-CN');
+
+            btn.disabled = false;
+            
+            if (translation.success) {
+                // 如果清洗前后不同，显示对比
+                if (translation.original && translation.original !== translation.translation) {
+                    textDiv.textContent = `中文: ${translation.original} → ${translation.translation}`;
+                } else {
+                    textDiv.textContent = `中文: ${translation.translation}`;
+                }
+                textDiv.style.display = 'block';
+                btn.innerHTML = '<span>🔼</span><span>隐藏中文</span>';
+            } else {
+                textDiv.textContent = '翻译失败，请重试';
+                textDiv.style.display = 'block';
+                btn.innerHTML = '<span>🔄</span><span>重试</span>';
+            }
         }
 
         // 显示中文翻译
@@ -1870,14 +3082,15 @@
             performSearch();
         }
 
-        // 收藏功能
-        function getFavorites() {
-            const stored = localStorage.getItem('dictionary_favorites');
+        // 收藏功能 - 支持两个收藏本
+        // bookType: 'en-si' (英翻僧) 或 'si-en' (僧翻英)
+        function getFavorites(bookType = 'en-si') {
+            const stored = localStorage.getItem(`dictionary_favorites_${bookType}`);
             return stored ? JSON.parse(stored) : [];
         }
 
-        function saveFavorites(favorites) {
-            localStorage.setItem('dictionary_favorites', JSON.stringify(favorites));
+        function saveFavorites(favorites, bookType = 'en-si') {
+            localStorage.setItem(`dictionary_favorites_${bookType}`, JSON.stringify(favorites));
         }
 
         function isFavorite(english, sinhala, prefix) {
@@ -1921,7 +3134,7 @@
             localStorage.setItem('dictionary_search_history', JSON.stringify(history));
         }
 
-        function addSearchHistory(query, sinhala, prefix) {
+        function addSearchHistory(query, sinhala, prefix, english) {
             if (!query.trim()) return;
             
             const history = getSearchHistory();
@@ -1934,6 +3147,7 @@
             history.unshift({ 
                 query, 
                 sinhala: sinhala || '', 
+                english: english || '', 
                 prefix: prefix || '', 
                 timestamp: Date.now() 
             });
@@ -1984,6 +3198,7 @@
             }
             
             saveFavorites(favorites);
+            updateFavoritesCount();
         }
 
         function isFavoriteQuery(query) {
@@ -2019,25 +3234,215 @@
                 return;
             }
             
+            // 按组整理搜索记录
+            const groupedHistory = groupHistoryByStem(history);
+            
             header.style.display = 'flex';
-            list.innerHTML = history.map((item, index) => {
-                const timeStr = formatTime(item.timestamp);
-                const isFav = isFavoriteQuery(item.query);
+            list.innerHTML = groupedHistory.map((group, groupIndex) => {
+                const { mainWord, items, latestTime } = group;
+                const timeStr = formatTime(latestTime);
+                
+                // 获取完整的词义组合（重新搜索）
+                const isSi = isSinhala(mainWord);
+                const results = isSi 
+                    ? searchBySinhalaSmart(mainWord) 
+                    : searchEnglish(mainWord, 'exact');
+                
+                // 构建显示内容（使用搜索结果）
+                let displayTexts = [];
+                if (results.length > 0) {
+                    if (isSi) {
+                        displayTexts = results.map(item => `${item.english} (${item.prefix})`);
+                    } else {
+                        displayTexts = results.map(item => `${item.sinhala} (${item.prefix})`);
+                    }
+                } else {
+                    // 如果没有找到结果，使用历史记录中的数据
+                    if (isSi) {
+                        displayTexts = items.map(item => item.english ? `${item.english} (${item.prefix})` : '');
+                    } else {
+                        displayTexts = items.map(item => item.sinhala ? `${item.sinhala} (${item.prefix})` : '');
+                    }
+                    // 过滤空字符串
+                    displayTexts = displayTexts.filter(t => t);
+                }
+                
+                const fullText = displayTexts.join('; ');
+                const truncatedText = truncateText(fullText, 60);
+                const isFav = isGroupFavoritedForHistory(items);
+                
                 return `
-                    <li class="search-history-item" onclick="searchFromHistory('${escapeHtml(item.query)}')">
-                        <span class="search-history-text">${escapeHtml(item.query)}</span>
+                    <li class="search-history-item" onclick="searchFromHistory('${escapeHtml(mainWord)}')">
+                        <span class="search-history-text">${escapeHtml(mainWord)}</span>
+                        <span class="search-history-translations" title="${escapeHtml(fullText)}">${escapeHtml(truncatedText)}</span>
                         <span class="search-history-time">${timeStr}</span>
                         <div class="search-history-actions">
-                            <button class="search-history-action-btn favorite" onclick="event.stopPropagation(); toggleFavoriteFromHistory('${escapeHtml(item.query)}', this)">
+                            <button class="search-history-action-btn favorite" onclick="event.stopPropagation(); toggleFavoriteFromHistoryGroup('${encodeURIComponent(JSON.stringify(items))}', this)">
                                 ${isFav ? '❤️' : '🤍'}
                             </button>
-                            <button class="search-history-action-btn delete" onclick="event.stopPropagation(); removeSearchHistory(${index})">
+                            <button class="search-history-action-btn delete" onclick="event.stopPropagation(); removeSearchHistoryGroup('${escapeHtml(mainWord)}')">
                                 🗑️
                             </button>
                         </div>
                     </li>
                 `;
             }).join('');
+        }
+
+        // 按词干分组搜索历史
+        function groupHistoryByStem(history) {
+            const grouped = new Map();
+            
+            history.forEach(item => {
+                const isSi = isSinhala(item.query);
+                let groupKey;
+                if (isSi) {
+                    groupKey = item.query.toLowerCase();
+                } else {
+                    groupKey = extractWordStem(item.query).toLowerCase();
+                }
+                
+                if (!grouped.has(groupKey)) {
+                    grouped.set(groupKey, {
+                        mainWord: item.query,
+                        isSinhala,
+                        items: [],
+                        latestTime: item.timestamp
+                    });
+                }
+                
+                const group = grouped.get(groupKey);
+                group.items.push(item);
+                if (item.timestamp > group.latestTime) {
+                    group.latestTime = item.timestamp;
+                }
+            });
+            
+            return Array.from(grouped.values()).sort((a, b) => b.latestTime - a.latestTime);
+        }
+
+        // 检查搜索历史组是否已收藏
+        function isGroupFavoritedForHistory(items) {
+            if (!items || items.length === 0) return false;
+            
+            const query = items[0].query;
+            const isSi = isSinhala(query);
+            const bookType = isSi ? 'si-en' : 'en-si';
+            
+            // 获取完整的词义组合（重新搜索）
+            const results = isSi 
+                ? searchBySinhalaSmart(query) 
+                : searchEnglish(query, 'exact');
+            
+            if (results.length === 0) {
+                // 如果没有找到结果，使用历史记录中的数据
+                const favorites = getFavorites(bookType);
+                return items.every(item => 
+                    favorites.some(fav => 
+                        fav.english === item.english && fav.sinhala === item.sinhala && fav.prefix === item.prefix
+                    )
+                );
+            }
+            
+            // 使用搜索结果检查收藏状态
+            const favorites = getFavorites(bookType);
+            return results.every(item => 
+                favorites.some(fav => 
+                    fav.english === item.english && fav.sinhala === item.sinhala && fav.prefix === item.prefix
+                )
+            );
+        }
+
+        // 收藏/取消收藏搜索历史组
+        function toggleFavoriteFromHistoryGroup(itemsJson, btn) {
+            const historyItems = JSON.parse(decodeURIComponent(itemsJson));
+            if (!historyItems || historyItems.length === 0) return;
+            
+            const query = historyItems[0].query;
+            const isSi = isSinhala(query);
+            const bookType = isSi ? 'si-en' : 'en-si';
+            
+            // 获取完整的词义组合（重新搜索）
+            const results = isSi 
+                ? searchBySinhalaSmart(query) 
+                : searchEnglish(query, 'exact');
+            
+            if (results.length === 0) {
+                // 如果没有找到结果，使用历史记录中的数据
+                handleFavoriteToggle(historyItems, bookType, btn);
+            } else {
+                // 使用搜索结果进行收藏
+                handleFavoriteToggle(results, bookType, btn);
+            }
+            
+            // 刷新界面
+            updateFavoritesCount();
+            renderFavoritesPanel(bookType);
+            
+            // 刷新预览和搜索记录
+            const suggestions = getSuggestions(query);
+            renderSuggestions(suggestions);
+            renderSearchHistory();
+        }
+        
+        // 处理收藏/取消收藏逻辑
+        function handleFavoriteToggle(items, bookType, btn) {
+            const favorites = getFavorites(bookType);
+            
+            const allFavorited = items.every(item => 
+                favorites.some(fav => 
+                    fav.english === item.english && fav.sinhala === item.sinhala && fav.prefix === item.prefix
+                )
+            );
+            
+            if (allFavorited) {
+                items.forEach(item => {
+                    const idx = favorites.findIndex(fav => 
+                        fav.english === item.english && fav.sinhala === item.sinhala && fav.prefix === item.prefix
+                    );
+                    if (idx >= 0) {
+                        favorites.splice(idx, 1);
+                    }
+                });
+                btn.innerHTML = '🤍';
+            } else {
+                items.forEach(item => {
+                    const exists = favorites.some(fav => 
+                        fav.english === item.english && fav.sinhala === item.sinhala && fav.prefix === item.prefix
+                    );
+                    if (!exists) {
+                        favorites.push({ 
+                            english: item.english, 
+                            sinhala: item.sinhala, 
+                            prefix: item.prefix, 
+                            timestamp: Date.now() 
+                        });
+                    }
+                });
+                btn.innerHTML = '❤️';
+            }
+            
+            saveFavorites(favorites, bookType);
+        }
+
+        // 删除搜索历史组
+        function removeSearchHistoryGroup(mainWord) {
+            const history = getSearchHistory();
+            const isSi = isSinhala(mainWord);
+            let groupKey;
+            if (isSi) {
+                groupKey = mainWord.toLowerCase();
+            } else {
+                groupKey = extractWordStem(mainWord).toLowerCase();
+            }
+            
+            const filtered = history.filter(item => {
+                const itemKey = isSinhala ? item.query.toLowerCase() : extractWordStem(item.query).toLowerCase();
+                return itemKey !== groupKey;
+            });
+            
+            saveSearchHistory(filtered);
+            renderSearchHistory();
         }
 
         function formatTime(timestamp) {
